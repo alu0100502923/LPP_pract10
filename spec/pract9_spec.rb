@@ -116,4 +116,21 @@ describe Pract9 do
     end
     
   end
+  
+  describe Comparable do
+    
+    it "El libro 1 es menor que el libro 2" do
+      expect(lib1 > lib2).to eq(true)
+    end
+    
+    it "El libro 2 es menor que el libro 3" do
+      expect(lib2 < lib3).to eq(true)
+    end
+    
+    it "El libro 2 es menor que el libro 3" do
+      lib6 = Libro.new(["Dave Thomas","Andy Hunt", "Chad Fowler"],"Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide","(The Facets of Ruby)","Pragmatic Bookshelf;", "4 Edition", "(July 7, 2013)",["ISBN-13: 978-1937785499", "ISBN-10:1937785491"])
+      expect(lib1 == lib6).to eq(true)
+    end
+    
+  end
 end
