@@ -1,5 +1,5 @@
 require "pract9/version"
 
-module Pract9
+class Pract9
   # Your code goes here...
 end
