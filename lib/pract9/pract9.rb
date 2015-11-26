@@ -1,6 +1,9 @@
 require "pract9/version"
 
     class Pract9
+        
+        include Comparable
+        
            attr_reader :autor, :titulo, :serie, :editorial, :edicion, :fecha, :isbn
     
        def initialize(a,t,s,e,x,pub,i)
@@ -20,6 +23,10 @@ require "pract9/version"
         cadena = "#{cadena}"+"#{editorial} #{edicion} edition (#{fecha})\n"
         cadena = "#{cadena}"+"#{isbn}"
        end
+       
+        def <=>(other)
+			@titulo <=> other.titulo
+        end
        
     end
 
