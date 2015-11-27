@@ -119,17 +119,51 @@ describe Pract9 do
   
   describe Comparable do
     
-    it "El libro 1 es menor que el libro 2" do
+    it "El libro 1 es mayor que el libro 2" do
       expect(lib1 > lib2).to eq(true)
+    end
+    
+    it "El libro 1 es mayor o igual que el libro 2" do
+      expect(lib1 >= lib2).to eq(true)
     end
     
     it "El libro 2 es menor que el libro 3" do
       expect(lib2 < lib3).to eq(true)
     end
     
-    it "El libro 2 es menor que el libro 3" do
+    it "El libro 2 es menor o igual que el libro 3" do
+      expect(lib2 <= lib3).to eq(true)
+    end
+    
+    it "El libro 1 es igual que el libro 6" do
       lib6 = Libro.new(["Dave Thomas","Andy Hunt", "Chad Fowler"],"Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide","(The Facets of Ruby)","Pragmatic Bookshelf;", "4 Edition", "(July 7, 2013)",["ISBN-13: 978-1937785499", "ISBN-10:1937785491"])
       expect(lib1 == lib6).to eq(true)
+    end
+    
+  end
+  
+  describe Enumerable do
+    
+    it "Metodo any" do
+      lista2 = Lista.new(nil)
+      expect(lista.any?).to eq(true)
+      expect(lista2.any?).to eq(false)
+    end
+    
+    it "Metodo all" do
+      expect(lista.all?).to eq(true)
+    end
+    
+    it "Metodo count" do
+      expect(lista.count).to eq(4)
+    end
+    
+    it "Metodo max" do
+      expect(lista.max).to eq(lib3)
+    end
+        
+    it "Metodo min" do
+      expect(lista.min).to eq(lib5)
     end
     
   end

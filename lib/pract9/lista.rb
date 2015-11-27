@@ -5,6 +5,8 @@ require "pract9/version"
 
     class Lista
         
+        include Enumerable
+        
         attr_accessor :inicio, :final, :prev
         
         def initialize(libro)
