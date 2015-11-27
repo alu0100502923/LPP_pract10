@@ -34,15 +34,23 @@ require "pract9/version"
         end
         
         def to_s
-		aux = @inicio
-		s = ''
-		i = 1
-		while (aux != nil) do
-			s += "Libro #{i}: #{aux.value.to_s}\n"
-			aux = aux.next
-			i += 1
-		end
-		s
+		    aux = @inicio
+		    s = ''
+		    i = 1
+		    while (aux != nil) do
+			    s += "Libro #{i}: #{aux.value.to_s}\n"
+			    aux = aux.next
+			    i += 1
+		    end
+		    s
+        end
+        
+        def each
+		    aux = @inicio
+		    while (aux != nil) do
+			    yield aux.value
+			    aux = aux.next
+		    end
 	end	
         
     end
