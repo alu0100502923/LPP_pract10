@@ -9,17 +9,32 @@ require "pract9/version"
         
         attr_accessor :inicio, :final, :prev
         
-        def initialize(libro)
-            @inicio = Node.new(libro, nil, nil)
-            @final = @inicio
+        def initialize
+            @inicio = nil
+            @final = nil
             
         end
         
+        #def initialize(libro)
+        #    @inicio = Node.new(libro, nil, nil)
+        #    @final = @inicio
+        #    
+        #end
+        
         def push(libro)
-            @final.next = Node.new(libro, nil, @final)
-            @final = @final.next
-            @final.value
+            aux = Node.new(libro,nil, nil)
+        if @inicio == nil
+            @inicio = aux
+            @final = aux
+            else
+                aux1 = @final
+                @final.next = aux
+                @final = aux
+                @final.prev = aux1
         end
+            libro
+        end
+    
         
         def pushMore(libros)
 		    libros.each do |libro|

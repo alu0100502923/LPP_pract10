@@ -27,6 +27,8 @@ require "pract9/version"
         def <=>(other)
 			@titulo <=> other.titulo
         end
+        
+        
        
     end
 

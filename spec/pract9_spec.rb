@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'pract9/pract9'
 require 'pract9/lista'
+require 'pract9/cita'
 
 describe Pract9 do
   
@@ -10,7 +11,8 @@ describe Pract9 do
       lib4 = Libro.new(["David Chelimsky", "Dave Astels", "Bryan Helmkamp", "Dan North", "Zach Dennis", "Aslak Hellesoy"],"The RSpec Book: Behaviour Driven Development with RSpec, Cucumber, and Friends","(The Facets of Ruby)"," Pragmatic Bookshelf;"," 1 edition","December 25, 2010",["ISBN-10: 1934356379", "ISBN-13: 978-1934356371"])
       lib5 = Libro.new(["Richard E. Silverman"],"Git Pocket","Guide O’Reilly"," Media;","1 edition","August 2, 2013",["ISBN-10: 1449325866", "ISBN-13: 978-1449325862"])
           
-      lista = Lista.new(lib1)
+      lista = Lista.new()
+      lista.push(lib1)
       lista.push(lib2)
     
   describe "Formatear la referencia" do
@@ -145,7 +147,7 @@ describe Pract9 do
   describe Enumerable do
     
     it "Metodo any" do
-      lista2 = Lista.new(nil)
+      lista2 = Lista.new()
       expect(lista.any?).to eq(true)
       expect(lista2.any?).to eq(false)
     end
@@ -167,4 +169,7 @@ describe Pract9 do
     end
     
   end
+  
+  
+  
 end
