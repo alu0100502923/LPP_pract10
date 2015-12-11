@@ -63,14 +63,21 @@ require "pract9/version"
     end
     
     class ApaStyle < Pract9
-        attr_reader :apellidos
-        def initialize(a,ap,t,s,e,x,pub,i)
+        
+        attr_reader :apellidos, :year
+        
+        def initialize(a,ap,t,s,e,x,pub,year,i)
            super(a,t,s,e,x,pub,i)
            @apellidos = ap
+           @year = year
         end
         
         def <=>(other)
-			@apellidos <=> other.apellidos
+			if(@apellidos!=other.apellidos)
+                @apellidos <=> other.apellidos
+            else
+                @year<=>other.year
+            end
         end
         
         def to_s

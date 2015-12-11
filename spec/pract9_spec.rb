@@ -173,18 +173,25 @@ describe Pract9 do
   describe Cita do
    
     cita = Cita.new
-    cit = ApaStyle.new(["Juan","Clara"],["Oliva","Subiron"],"Los perros","Animales","yolo","73","14 August",["1232123"])
-    cit1 = ApaStyle.new(["Pepe","Otilio"],["Gotera","Doe"],"aLos perros","Animales","yolo","73","14 August",["1232123"])
+    cit = ApaStyle.new(["Juan","Clara"],["Oliva","Subiron"],"Los perros","Animales","yolo","73","14 August",1990,["1232123"])
     cita.insertar(cit)
-    cita.insertar(cit1)
     
      it "Probando el formato apellido e inicial del nombre" do
         expect(cita.nombre(cit)).to eq("Oliva, J. & Subiron, C.")
     end
 
     it "Ordenados alfabeticamente por apellidos del primer autor" do
+      cit1 = ApaStyle.new(["Pepe","Otilio"],["Gotera","Doe"],"Los perros","Animales","yolo","73","14 August",1990,["1232123"])
+      cita.insertar(cit1)
       expect(cita.nombre(cita.lo[0])).to eq("Gotera, P. & Doe, O.")
       expect(cita.nombre(cita.lo[1])).to eq("Oliva, J. & Subiron, C.")
+    end
+    
+    it "Ordenados por año si el articulo es del mismo autor" do
+      cit2 = ApaStyle.new(["Juan","Clara"],["Oliva","Subiron"],"Los Gatos","Animales","yolo","73","14 August",1800,["1232123"])
+      cita.insertar(cit2)
+      expect(cita.lo[1].to_s).to eq("[\"Oliva\", \"Subiron\"][\"Juan\", \"Clara\"].\nLos Gatos\n(Animales)\nyolo 73 edition (14 August)\n[\"1232123\"]")
+      expect(cita.lo[2].to_s).to eq("[\"Oliva\", \"Subiron\"][\"Juan\", \"Clara\"].\nLos perros\n(Animales)\nyolo 73 edition (14 August)\n[\"1232123\"]")
     end
     
   end
