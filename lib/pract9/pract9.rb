@@ -76,16 +76,33 @@ require "pract9/version"
 			if(@apellidos!=other.apellidos)
                 @apellidos <=> other.apellidos
             else
-                @year<=>other.year
+                if(@year!=other.year)
+                    @year<=>other.year
+                else
+                    @titulo<=>other.titulo
+                end
             end
         end
         
+        def nombre
+            i = 0
+            if(autor.length>1)
+                while(i<autor.length-2)
+                    nombre = "#{nombre}"+"#{apellidos[i]}, "+"#{autor[i][0]}., "
+                    i=i+1
+                end
+                nombre = "#{nombre}"+"#{apellidos[i]}, "+"#{autor[i][0]}. & "
+                i = i+1
+            end
+            nombre = "#{nombre}"+"#{apellidos[i]}, "+"#{autor[i][0]}."
+        end
+        
         def to_s
-        cadena = "#{apellidos}"+"#{autor}.\n\t"
-        cadena = "#{cadena}"+"#{titulo}\n\t"
-        cadena = "#{cadena}"+"(#{serie})\n\t"
-        cadena = "#{cadena}"+"#{editorial} #{edicion} edition (#{fecha})\n\t"
-        cadena = "#{cadena}"+"#{isbn}"
+            cadena = nombre + "\n\t"
+            cadena = "#{cadena}"+"#{titulo}\n\t"
+            cadena = "#{cadena}"+"(#{serie})\n\t"
+            cadena = "#{cadena}"+"#{editorial} #{edicion} edition (#{fecha}#{year})\n\t"
+            cadena = "#{cadena}"+"#{isbn}"
        end
         
     end

@@ -173,32 +173,39 @@ describe Pract9 do
   describe Cita do
    
     cita = Cita.new
-    cit = ApaStyle.new(["Juan","Clara"],["Oliva","Subiron"],"Los perros","Animales","yolo","73","14 August",1990,["1232123"])
+    cit = ApaStyle.new(["Juan","Clara"],["Oliva","Subiron"],"Los perros","Animales","yolo","73","14 August ",1990,["1232123"])
     cita.insertar(cit)
     
      it "Probando el formato apellido e inicial del nombre" do
-        expect(cita.nombre(cit)).to eq("Oliva, J. & Subiron, C.")
+        expect(cit.nombre).to eq("Oliva, J. & Subiron, C.")
     end
 
     it "Ordenados alfabeticamente por apellidos del primer autor" do
-      cit1 = ApaStyle.new(["Pepe","Otilio","Mario"],["Gotera","Doe","Perez"],"Los perros","Animales","yolo","73","14 August",1990,["1232123"])
+      cit1 = ApaStyle.new(["Pepe","Otilio","Mario"],["Gotera","Doe","Perez"],"Los perros","Animales","yolo","73","14 August ",1990,["1232123"])
       cita.insertar(cit1)
-      expect(cita.nombre(cita.lo[0])).to eq("Gotera, P., Doe, O. & Perez, M.")
-      expect(cita.nombre(cita.lo[1])).to eq("Oliva, J. & Subiron, C.")
+      expect(cita.lo[0].nombre).to eq("Gotera, P., Doe, O. & Perez, M.")
+      expect(cita.lo[1].nombre).to eq("Oliva, J. & Subiron, C.")
     end
     
     it "Ordenados por año si el articulo es del mismo autor" do
-      cit2 = ApaStyle.new(["Juan","Clara"],["Oliva","Subiron"],"Los Gatos","Animales","yolo","73","14 August",1800,["1232123"])
+      cit2 = ApaStyle.new(["Juan","Clara"],["Oliva","Subiron"],"Los Gatos","Animales","yolo","73","14 August ",1800,["1232123"])
       cita.insertar(cit2)
-      expect(cita.lo[1].to_s).to eq("[\"Oliva\", \"Subiron\"][\"Juan\", \"Clara\"].\n\tLos Gatos\n\t(Animales)\n\tyolo 73 edition (14 August)\n\t[\"1232123\"]")
-      expect(cita.lo[2].to_s).to eq("[\"Oliva\", \"Subiron\"][\"Juan\", \"Clara\"].\n\tLos perros\n\t(Animales)\n\tyolo 73 edition (14 August)\n\t[\"1232123\"]")
+      expect(cita.lo[1].to_s).to eq("Oliva, J. & Subiron, C.\n\tLos Gatos\n\t(Animales)\n\tyolo 73 edition (14 August 1800)\n\t[\"1232123\"]")
+      expect(cita.lo[2].to_s).to eq("Oliva, J. & Subiron, C.\n\tLos perros\n\t(Animales)\n\tyolo 73 edition (14 August 1990)\n\t[\"1232123\"]")
     end
     
     it "Poner primero donde el autor salga solo" do
-      cit3 = ApaStyle.new(["Juan"],["Oliva"],"Los Pollos","Animales","yolo","73","14 August",1800,["1232123"])
+      cit3 = ApaStyle.new(["Juan"],["Oliva"],"Los Pollos","Animales","yolo","73","14 August ",1800,["1232123"])
       cita.insertar(cit3)
-      expect(cita.lo[1].to_s).to eq("[\"Oliva\"][\"Juan\"].\n\tLos Pollos\n\t(Animales)\n\tyolo 73 edition (14 August)\n\t[\"1232123\"]")
-      expect(cita.lo[3].to_s).to eq("[\"Oliva\", \"Subiron\"][\"Juan\", \"Clara\"].\n\tLos perros\n\t(Animales)\n\tyolo 73 edition (14 August)\n\t[\"1232123\"]")
+      expect(cita.lo[1].to_s).to eq("Oliva, J.\n\tLos Pollos\n\t(Animales)\n\tyolo 73 edition (14 August 1800)\n\t[\"1232123\"]")
+      expect(cita.lo[3].to_s).to eq("Oliva, J. & Subiron, C.\n\tLos perros\n\t(Animales)\n\tyolo 73 edition (14 August 1990)\n\t[\"1232123\"]")
+    end
+    
+    it "Ordenar por titulo si mismo autor y mismo año" do
+      cit4 = ApaStyle.new(["Juan"],["Oliva"],"Las cabras","Animales","yolo","73","14 August ",1800,["1232123"])
+      cita.insertar(cit4)
+      expect(cita.lo[1].to_s).to eq("Oliva, J.\n\tLas cabras\n\t(Animales)\n\tyolo 73 edition (14 August 1800)\n\t[\"1232123\"]")
+      expect(cita.lo[2].to_s).to eq("Oliva, J.\n\tLos Pollos\n\t(Animales)\n\tyolo 73 edition (14 August 1800)\n\t[\"1232123\"]")
     end
     
   end
