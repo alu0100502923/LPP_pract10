@@ -208,6 +208,10 @@ describe Pract9 do
       expect(cita.lo[2].to_s).to eq("Oliva, J.\n\tLos Pollos\n\t(Animales)\n\tyolo 73 edition (14 August 1800)\n\t[\"1232123\"]")
     end
     
+    it "Muestra toda la lista de citas" do
+      expect(cita.to_s).to eq("Gotera, P., Doe, O. & Perez, M.\n\tLos perros\n\t(Animales)\n\tyolo 73 edition (14 August 1990)\n\t[\"1232123\"]\nOliva, J.\n\tLas cabras\n\t(Animales)\n\tyolo 73 edition (14 August 1800)\n\t[\"1232123\"]\nOliva, J.\n\tLos Pollos\n\t(Animales)\n\tyolo 73 edition (14 August 1800)\n\t[\"1232123\"]\nOliva, J. & Subiron, C.\n\tLos Gatos\n\t(Animales)\n\tyolo 73 edition (14 August 1800)\n\t[\"1232123\"]\nOliva, J. & Subiron, C.\n\tLos perros\n\t(Animales)\n\tyolo 73 edition (14 August 1990)\n\t[\"1232123\"]\n")
+    end
+    
   end
   
 end
