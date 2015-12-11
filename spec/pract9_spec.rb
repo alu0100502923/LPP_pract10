@@ -25,7 +25,7 @@ describe Pract9 do
   
   describe Revista do
     
-    rev = Revista.new("La revistaca",["Juan"],"Los perros","Animales","yolo","73","14 August",["1232123"])
+    rev = Revista.new("la revistaca",["Juan"],"Los perros","Animales","yolo","73","14 August",["1232123"])
     
     it "Es una instancia de Revista" do
       expect(rev.instance_of?Revista).to eq(true)
@@ -36,7 +36,7 @@ describe Pract9 do
     end
     
     it "Contiene nombre de la revista" do
-      expect(rev.nomRevista).to eq("La revistaca")  
+      expect(rev.nomRevista).to eq("La Revistaca")  
     end
     
   end

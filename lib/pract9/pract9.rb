@@ -41,7 +41,17 @@ require "pract9/version"
     class Revista < Pract9
         attr_reader :nomRevista
         def initialize(nr,a,t,s,e,x,pub,i)
+            
            super(a,t,s,e,x,pub,i)
+           
+           token1 = nr.split
+            nr = ''
+            i=0
+            while(i<token1.length-1)
+                nr ="#{nr}"+ "#{token1[i].capitalize} "
+                i = i+1
+            end
+            nr ="#{nr}"+ "#{token1[i].capitalize}"
            @nomRevista = nr
         end
     end
