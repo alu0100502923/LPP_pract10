@@ -25,5 +25,7 @@ class Cita
         @l.push(b)
         @lo=@l.sort
     end
+    
+
         
 end
