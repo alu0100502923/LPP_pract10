@@ -81,10 +81,10 @@ require "pract9/version"
         end
         
         def to_s
-        cadena = "#{apellidos}"+"#{autor}.\n"
-        cadena = "#{cadena}"+"#{titulo}\n"
-        cadena = "#{cadena}"+"(#{serie})\n"
-        cadena = "#{cadena}"+"#{editorial} #{edicion} edition (#{fecha})\n"
+        cadena = "#{apellidos}"+"#{autor}.\n\t"
+        cadena = "#{cadena}"+"#{titulo}\n\t"
+        cadena = "#{cadena}"+"(#{serie})\n\t"
+        cadena = "#{cadena}"+"#{editorial} #{edicion} edition (#{fecha})\n\t"
         cadena = "#{cadena}"+"#{isbn}"
        end
         

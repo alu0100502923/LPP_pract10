@@ -190,15 +190,15 @@ describe Pract9 do
     it "Ordenados por año si el articulo es del mismo autor" do
       cit2 = ApaStyle.new(["Juan","Clara"],["Oliva","Subiron"],"Los Gatos","Animales","yolo","73","14 August",1800,["1232123"])
       cita.insertar(cit2)
-      expect(cita.lo[1].to_s).to eq("[\"Oliva\", \"Subiron\"][\"Juan\", \"Clara\"].\nLos Gatos\n(Animales)\nyolo 73 edition (14 August)\n[\"1232123\"]")
-      expect(cita.lo[2].to_s).to eq("[\"Oliva\", \"Subiron\"][\"Juan\", \"Clara\"].\nLos perros\n(Animales)\nyolo 73 edition (14 August)\n[\"1232123\"]")
+      expect(cita.lo[1].to_s).to eq("[\"Oliva\", \"Subiron\"][\"Juan\", \"Clara\"].\n\tLos Gatos\n\t(Animales)\n\tyolo 73 edition (14 August)\n\t[\"1232123\"]")
+      expect(cita.lo[2].to_s).to eq("[\"Oliva\", \"Subiron\"][\"Juan\", \"Clara\"].\n\tLos perros\n\t(Animales)\n\tyolo 73 edition (14 August)\n\t[\"1232123\"]")
     end
     
     it "Poner primero donde el autor salga solo" do
       cit3 = ApaStyle.new(["Juan"],["Oliva"],"Los Pollos","Animales","yolo","73","14 August",1800,["1232123"])
       cita.insertar(cit3)
-      expect(cita.lo[1].to_s).to eq("[\"Oliva\"][\"Juan\"].\nLos Pollos\n(Animales)\nyolo 73 edition (14 August)\n[\"1232123\"]")
-      expect(cita.lo[3].to_s).to eq("[\"Oliva\", \"Subiron\"][\"Juan\", \"Clara\"].\nLos perros\n(Animales)\nyolo 73 edition (14 August)\n[\"1232123\"]")
+      expect(cita.lo[1].to_s).to eq("[\"Oliva\"][\"Juan\"].\n\tLos Pollos\n\t(Animales)\n\tyolo 73 edition (14 August)\n\t[\"1232123\"]")
+      expect(cita.lo[3].to_s).to eq("[\"Oliva\", \"Subiron\"][\"Juan\", \"Clara\"].\n\tLos perros\n\t(Animales)\n\tyolo 73 edition (14 August)\n\t[\"1232123\"]")
     end
     
   end
