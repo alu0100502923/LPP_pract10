@@ -181,9 +181,9 @@ describe Pract9 do
     end
 
     it "Ordenados alfabeticamente por apellidos del primer autor" do
-      cit1 = ApaStyle.new(["Pepe","Otilio"],["Gotera","Doe"],"Los perros","Animales","yolo","73","14 August",1990,["1232123"])
+      cit1 = ApaStyle.new(["Pepe","Otilio","Mario"],["Gotera","Doe","Perez"],"Los perros","Animales","yolo","73","14 August",1990,["1232123"])
       cita.insertar(cit1)
-      expect(cita.nombre(cita.lo[0])).to eq("Gotera, P. & Doe, O.")
+      expect(cita.nombre(cita.lo[0])).to eq("Gotera, P., Doe, O. & Perez, M.")
       expect(cita.nombre(cita.lo[1])).to eq("Oliva, J. & Subiron, C.")
     end
     
