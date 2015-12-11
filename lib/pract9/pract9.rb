@@ -61,3 +61,20 @@ require "pract9/version"
            @url = url
         end
     end
+    
+    class ApaStyle < Pract9
+        attr_reader :apellidos
+        def initialize(a,ap,t,s,e,x,pub,i)
+           super(a,t,s,e,x,pub,i)
+           @apellidos = ap
+        end
+        
+        def to_s
+        cadena = "#{apellidos}"+"#{autor}.\n"
+        cadena = "#{cadena}"+"#{titulo}\n"
+        cadena = "#{cadena}"+"(#{serie})\n"
+        cadena = "#{cadena}"+"#{editorial} #{edicion} edition (#{fecha})\n"
+        cadena = "#{cadena}"+"#{isbn}"
+       end
+        
+    end
