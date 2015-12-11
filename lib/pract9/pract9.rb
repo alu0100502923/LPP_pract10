@@ -69,6 +69,10 @@ require "pract9/version"
            @apellidos = ap
         end
         
+        def <=>(other)
+			@apellidos <=> other.apellidos
+        end
+        
         def to_s
         cadena = "#{apellidos}"+"#{autor}.\n"
         cadena = "#{cadena}"+"#{titulo}\n"
